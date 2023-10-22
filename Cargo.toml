@@ -8,6 +8,8 @@ authors = ["uyplayer <uyplayer@qq.com>"]
 description = "A Rust crate using pure rust code for technical analysis"
 keywords = ["rusty-talib","technical","indicators", "analysis", "talib"]
 categories = ["data-processing", "financial", "mathematics"]
+repository = "https://github.com/uyplayer/rusty-talib"
+documentation = "https://github.com/uyplayer/rusty-talib"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -15,6 +17,10 @@ categories = ["data-processing", "financial", "mathematics"]
 rand = "0.8.5"
 polars  = { version = "0.33.2", features = ["lazy","describe","rolling_window"] }
 
+
+[lib]
+name = "rusty_talib"
+path = "src/lib.rs"
 
 
 [features]
