@@ -1,0 +1,26 @@
+[package]
+name = "rusty-talib"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+readme = "README.md"
+authors = ["uyplayer <uyplayer@qq.com>"]
+description = "A Rust crate using pure rust code for technical analysis"
+keywords = ["rusty-talib","technical","indicators", "analysis", "talib"]
+categories = ["data-processing", "financial", "mathematics"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = "0.8.5"
+polars  = { version = "0.33.2", features = ["lazy","describe","rolling_window"] }
+
+
+[features]
+default = ["overlap_studies"]
+overlap_studies = []
+
+
+
+
+
