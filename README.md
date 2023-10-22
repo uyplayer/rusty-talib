@@ -248,9 +248,7 @@ rusty-talib = { version = "0.1.0", features = ["overlap_studies"] }
 
 ### Example
 ```rust
-use rand;
-use rusty_talib;
-use rusty_talib::ErrorMsg;
+use rusty_talib::{self,ErrorMsg};
 use polars::prelude::*;
 
 fn main(){

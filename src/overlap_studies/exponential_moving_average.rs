@@ -26,10 +26,6 @@ pub fn exponential_moving_average<'a>(src:&'a Series, time_period:Option<u32>)->
         )));
     }
 
-    for i in 1..src.len() {
-        let elem  = src.get(i)?.try_extract::<f64>()?;
-        eprintln!("{:?}",elem);
-    }
 
     let result_series = Series::new("data",[1,2,3,3,10]);
     Ok(result_series)
@@ -39,7 +35,6 @@ pub fn exponential_moving_average<'a>(src:&'a Series, time_period:Option<u32>)->
 // unit test
 #[cfg(test)]
 mod tests {
-    use rand::Rng;
     use super::*;
 
     #[test]
