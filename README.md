@@ -48,7 +48,7 @@ rusty-talib = { version = "0.1.0", features = ["overlap_studies", "momentum_indi
 | SAREXT               | Parabolic SAR - Extended                    | Pending |
 | SMA                  | Simple Moving Average                       | Pending |
 | T3                   | Triple Exponential Moving Average (T3)      | Pending |
-| TEMA                 | Triple Exponential Moving                   |         | 
+| TEMA                 | Triple Exponential Moving                   | Pending | 
 
 
 ##### Momentum Indicators
