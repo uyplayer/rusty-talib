@@ -14,7 +14,7 @@ use rusty_talib;
 use rusty_talib::ErrorMsg;
 use polars::prelude::*;
 
-fn main()->Result<(), Box<dyn std::error::Error>> {
+fn main(){
     let random_data: [i32; 7] = [23, 25, 12, 28, 33, 31, 35];
     let close = Series::new("data",random_data);
     let res = rusty_talib::moving_average(&close,Some(3));
@@ -31,7 +31,4 @@ fn main()->Result<(), Box<dyn std::error::Error>> {
             }
         }
     }
-
-    Ok(())
-
 }
