@@ -10,7 +10,6 @@
  */
 
 use rand;
-use rand::Rng;
 use rusty_talib;
 use rusty_talib::ErrorMsg;
 use polars::prelude::*;

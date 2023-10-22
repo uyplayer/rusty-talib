@@ -13,7 +13,7 @@
 use crate::ErrorMsg;
 use polars::prelude::*;
 
-pub fn exponential_moving_average<'a>(src:&'a Series, time_period:u32)-> Result<Series, Box<dyn std::error::Error>>{
+pub fn exponential_moving_average<'a>(src:&'a Series, time_period:Option<u32>)-> Result<Series, Box<dyn std::error::Error>>{
 
     let time_period = match time_period {
         Some(p) => p,
@@ -26,18 +26,9 @@ pub fn exponential_moving_average<'a>(src:&'a Series, time_period:u32)-> Result<
         )));
     }
 
-    let alpha = 2.0 / (time_period + 1) as f64;
-    let mut ema: Option<f64> = None;
 
-    let mut result = Vec::with_capacity(src.len());
-
-    for v in src.f64()? {
-        match ema {
-            Some(e) => ema = Some(v? * alpha? + e * (1.0 - alpha)),
-            None => ema = Some(v.unwrap()),
-        }
-        result.push(ema.unwrap());
-    }
-    Ok(Series::new("data", result))
+    return Err(Box::new(ErrorMsg(
+        "src Length must be greater than time_period".into(),
+    )));
 
 }
