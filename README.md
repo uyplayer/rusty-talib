@@ -18,16 +18,16 @@ rusty-talib = { version = "0.1.0", features = ["overlap_studies"] }
 
 ### Feature Modules
 #### Rusty-talib includes the following feature modules:
-- Overlap Studies
-- Momentum Indicators
-- Volume Indicators
-- Volatility Indicators
-- Price Transform
-- Cycle Indicators
-- Pattern Recognition
-- Statistical Functions
-- Math Transform
-- Math Operators
+- [X] Overlap Studies
+- [ ] Momentum Indicators
+- [ ] Volume Indicators
+- [ ] Volatility Indicators
+- [ ] Price Transform
+- [ ] Cycle Indicators
+- [ ] Pattern Recognition
+- [ ] Statistical Functions
+- [ ] Math Transform
+- [ ] Math Operators
 
 
 ##### Overlap Studies
