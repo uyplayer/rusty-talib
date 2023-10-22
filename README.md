@@ -248,6 +248,36 @@ rusty-talib = { version = "0.1.0", features = ["overlap_studies"] }
 
 ### Example
 ```rust
+use rand;
+use rusty_talib;
+use rusty_talib::ErrorMsg;
+use polars::prelude::*;
+
+fn main(){
+    let random_data: [i32; 7] = [23, 25, 12, 28, 33, 31, 35];
+    let close = Series::new("data",random_data);
+    let ma = rusty_talib::moving_average(&close,Some(3));
+    match res {
+        Ok(ma) => {
+            assert_eq!(ma.len(),close.len());
+            eprintln!("{:?}",ma);
+        },
+        Err(e) => {
+            if let Some(my_error) = e.downcast_ref::<ErrorMsg>() {
+                eprintln!("{}", my_error.0);
+            } else {
+                eprintln!("An error occurred");
+            }
+        }
+    }
+
+    Ok(())
+
+}
+
+```
+
+```rust
 // import polars lib 
 use polars::prelude::*;
 // Import the rusty-talib library in your Rust project
@@ -260,7 +290,8 @@ let result = rusty_talib::moving_average(close,2);
 // Series type 
 eprintln!("{:?}",result);
 ```
-### Casting 
+### Casting Series to Vec< f64>
+
 ```rust
 // import Float64Array
 use polars::export::arrow::array::{Float64Array};
@@ -275,10 +306,18 @@ let vec_values = match array.as_any().downcast_ref::<Float64Array>() {
     }
     None => return Err("Failed to downcast to Float64Array".into()),
 };
-
 eprintln!("{:?}",vec_values);
 
 ```
+### Casting Series to single data
+```rust
+// pull single data from Series type result
+for i in 1..result.len() {
+    let elem :f64= src.get(i)?.try_extract::<f64>()?;
+    eprintln!("{:?}",elem);
+}
+```
+
 
 ### License
 #### This project is licensed under the MIT License.
