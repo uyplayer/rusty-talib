@@ -21,6 +21,7 @@ polars  = { version = "0.33.2", features = ["lazy","describe","rolling_window"] 
 [lib]
 name = "rusty_talib"
 path = "src/lib.rs"
+crate-type = ["cdylib", "lib"]
 
 
 [features]

@@ -13,7 +13,7 @@ To use Rusty-talib, you can add it as a dependency and select specific feature m
 
 ```toml
 [dependencies]
-rusty_talib = { version = "0.1.0", features = ["overlap_studies", "momentum_indicators"] }
+rusty-talib = { version = "0.1.0", features = ["overlap_studies"] }
 ```
 
 ### Feature Modules
