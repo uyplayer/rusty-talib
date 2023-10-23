@@ -21,7 +21,7 @@ use polars::prelude::*;
 /// # Arguments
 ///
 /// * `src` - A reference to the Series on which the moving average is to be calculated.
-/// * `time_period` - An optional parameter representing the time period for the moving average calculation.
+/// * `time_period` - An optional parameter representing the time period for the moving average calculation. If not provided, the default value is 14.
 ///
 /// # Examples
 ///

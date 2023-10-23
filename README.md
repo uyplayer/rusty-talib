@@ -36,7 +36,7 @@ rusty-talib = { version = "0.1.0", features = ["overlap_studies"] }
 |----------------------|---------------------------------------------|---------|
 | BBANDS               | Bollinger Bands                             | Pending |
 | DEMA                 | Double Exponential Moving Average           | Pending |
-| EMA                  | Exponential Moving Average                  | Pending |
+| EMA                  | Exponential Moving Average                  | Done    |
 | HT_TRENDLINE         | Hilbert Transform - Instantaneous Trendline | Pending |
 | KAMA                 | Kaufman Adaptive Moving Average             | Pending |
 | MA                   | Moving Average                              | Done    | 
@@ -309,7 +309,7 @@ eprintln!("{:?}",vec_values);
 ### Casting Series to single data
 ```rust
 // pull single data from Series type result
-for i in 1..result.len() {
+for i in 0..result.len() {
     let elem :f64= src.get(i)?.try_extract::<f64>()?;
     eprintln!("{:?}",elem);
 }
