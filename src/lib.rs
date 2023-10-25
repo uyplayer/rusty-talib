@@ -1,26 +1,10 @@
-
-use std::error::Error;
-use std::fmt;
-
-
 #[cfg(feature = "overlap_studies")]
 mod overlap_studies;
-pub use overlap_studies::{moving_average,exponential_moving_average};
+pub use overlap_studies::{
+    b_bands, exponential_moving_average, moving_average, simple_moving_average,double_exponential_moving_average,
+};
 
+mod helper;
+pub use helper::ErrorMsg;
 
-
-
-
-///
-/// error handle
-///
-#[derive(Debug)]
-pub struct ErrorMsg(pub String);
-
-impl fmt::Display for ErrorMsg {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", self.0)
-    }
-}
-
-impl Error for ErrorMsg {}
+mod math;

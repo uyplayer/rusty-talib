@@ -1,57 +1,63 @@
 /*
  * @Author: uyplayer
- * @Date: 2023/10/22 15:59
+ * @Date: 2023/10/24 18:36
  * @Email: uyplayer@qq.com
- * @File: moving_average
+ * @File: simple_moving_average.rs
  * @Software: RustRover
  * @Dir: rusty-talib / src/overlap_studies
  * @Project_Name: rusty-talib
  * @Description:
  */
 
-//! moving average
-
 use crate::ErrorMsg;
 use polars::prelude::*;
 
-/// Calculates the moving average of a given series.
+/// Calculates the simple moving average within the given time period.
+///
 ///
 /// # Arguments
 ///
-/// * `src` - A reference to the Series on which the moving average is to be calculated.
-/// * `time_period` - An optional parameter representing the time period for the moving average calculation. If not provided, the default value is 14.
+/// * `src` - A Series object containing the data.
+/// * `time_period` - An optional time window size for calculating the moving average. If the time window size is not provided, the default is 14.
+///
+/// # Returns
+///
+/// Returns a new Series object containing the calculated simple moving average.
+///
+/// # Errors
+///
+/// Returns an error message if the length of the source Series is less than the specified time window size.
 ///
 /// # Examples
 ///
 /// ```
 /// use polars::prelude::*;
-/// use rusty_talib::moving_average;
+/// use rusty_talib::simple_moving_average;
 /// use rusty_talib::ErrorMsg;
 ///
-/// fn main() {
-///     let data = Series::new("data", &[1, 2, 3, 4, 5]);
-///     let result = moving_average(&data, Some(2));
-///     match result {
-///         Ok(ma) => {
-///             println!("{:?}", ma);
-///         },
-///         Err(e) => {
-///             if let Some(error) = e.downcast_ref::<ErrorMsg>() {
-///                 println!("{}", error.0);
-///             } else {
-///                 println!("An error occurred");
-///             }
-///         }
+/// let random_data: [i32; 7] = [23, 25, 12, 28, 33, 31, 35];
+/// let close = Series::new("data", random_data);
+/// let res = simple_moving_average(&close, Some(3));
+///  match res {
+///     Ok(res) => {
+///         assert_eq!(res.len(), close.len());
+///         eprintln!("{:?}", res);
+///     }
+///     Err(e) => {
+///         if let Some(my_error) = e.downcast_ref::<ErrorMsg>() {
+///            eprintln!("{}", my_error.0);
+///          } else {
+///             eprintln!("An error occurred");
+///          }
 ///     }
 /// }
 /// ```
 ///
-pub fn moving_average<'a>(
+pub fn simple_moving_average<'a>(
     src: &'a Series,
     time_period: Option<usize>,
 ) -> Result<Series, Box<dyn std::error::Error>> {
     let time_period = time_period.unwrap_or(14);
-
     if src.len() < time_period {
         return Err(Box::new(ErrorMsg(
             "src Length must be greater than time_period".into(),
@@ -84,11 +90,11 @@ mod tests {
     fn test_b_bands() {
         let random_data: [i32; 7] = [23, 25, 12, 28, 33, 31, 35];
         let close = Series::new("data", random_data);
-        let res = moving_average(&close, Some(3));
+        let res = simple_moving_average(&close, Some(3));
         match res {
-            Ok(ma) => {
-                assert_eq!(ma.len(), close.len());
-                eprintln!("{:?}", ma);
+            Ok(res) => {
+                assert_eq!(res.len(), close.len());
+                eprintln!("{:?}", res);
             }
             Err(e) => {
                 if let Some(my_error) = e.downcast_ref::<ErrorMsg>() {

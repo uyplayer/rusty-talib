@@ -14,7 +14,6 @@
 use crate::ErrorMsg;
 use polars::prelude::*;
 
-
 /// Calculates the exponential moving average of a Series.
 ///
 /// ``` python
@@ -43,7 +42,8 @@ use polars::prelude::*;
 /// ```
 /// use polars::prelude::*;
 /// use rusty_talib::exponential_moving_average;
-/// # fn main() -> Result<(), Box<dyn std::error::Error>> {
+/// fn main() -> Result<(), Box<dyn std::error::Error>> {
+///
 /// let values = vec![1.0, 2.0, 3.0, 4.0, 5.0];
 /// let series = Series::new("data", values);
 ///
@@ -62,12 +62,12 @@ use polars::prelude::*;
 ///
 /// This function calculates the exponential moving average for the specified `time_period`
 /// using the formula for calculating EMA. The `src` Series must have a length greater than or equal to the `time_period`.
-pub fn exponential_moving_average<'a>(src: &'a Series, time_period: Option<u32>) -> Result<Series, Box<dyn std::error::Error>> {
-    let time_period = match time_period {
-        Some(p) => p,
-        None => 14,
-    };
-    let time_period = time_period as usize;
+pub fn exponential_moving_average<'a>(
+    src: &Series,
+    time_period: Option<usize>,
+) -> Result<Series, Box<dyn std::error::Error>> {
+    let time_period = time_period.unwrap_or(14);
+
     if src.len() < time_period {
         return Err(Box::new(ErrorMsg(
             "src Length must be greater than time_period".into(),
@@ -87,14 +87,13 @@ pub fn exponential_moving_average<'a>(src: &'a Series, time_period: Option<u32>)
     Ok(Series::new("data", ema_values))
 }
 
-
 // unit test
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_b_bands() -> Result<(), Box<dyn std::error::Error>> {
+    fn test_exponential_moving_average() -> Result<(), Box<dyn std::error::Error>> {
         let random_data: [i32; 10] = [35, 10, 20, 56, 89, 76, 30, 46, 10, 653];
         let close = Series::new("data", random_data);
         let res = exponential_moving_average(&close, Some(3))?;

@@ -15,7 +15,7 @@ documentation = "https://github.com/uyplayer/rusty-talib"
 
 [dependencies]
 rand = "0.8.5"
-polars  = { version = "0.33.2", features = ["lazy","describe","rolling_window"] }
+polars  = { version = "0.33.2", features = ["lazy","describe","rolling_window","abs"] }
 
 
 [lib]

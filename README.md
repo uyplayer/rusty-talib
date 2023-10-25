@@ -34,8 +34,8 @@ rusty-talib = { version = "0.1.0", features = ["overlap_studies"] }
 
 | Function             | Description                                 | Status  |
 |----------------------|---------------------------------------------|---------|
-| BBANDS               | Bollinger Bands                             | Pending |
-| DEMA                 | Double Exponential Moving Average           | Pending |
+| BBANDS               | Bollinger Bands                             | Done    |
+| DEMA                 | Double Exponential Moving Average           | Done    |
 | EMA                  | Exponential Moving Average                  | Done    |
 | HT_TRENDLINE         | Hilbert Transform - Instantaneous Trendline | Pending |
 | KAMA                 | Kaufman Adaptive Moving Average             | Pending |
@@ -46,7 +46,7 @@ rusty-talib = { version = "0.1.0", features = ["overlap_studies"] }
 | MIDPRICE             | Midpoint Price over period                  | Pending |
 | SAR                  | Parabolic SAR                               | Pending |
 | SAREXT               | Parabolic SAR - Extended                    | Pending |
-| SMA                  | Simple Moving Average                       | Pending |
+| SMA                  | Simple Moving Average                       | Done    |
 | T3                   | Triple Exponential Moving Average (T3)      | Pending |
 | TEMA                 | Triple Exponential Moving                   | Pending | 
 

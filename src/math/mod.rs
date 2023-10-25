@@ -1,10 +1,10 @@
 /*
  * @Author: uyplayer
- * @Date: 2023/10/22 20:12
+ * @Date: 2023/10/24 20:18
  * @Email: uyplayer@qq.com
- * @File: overlap_studies_test.rs
+ * @File: mod.rs
  * @Software: RustRover
- * @Dir: rusty-talib / tests
+ * @Dir: rusty-talib / src/math
  * @Project_Name: rusty-talib
  * @Description:
  */
