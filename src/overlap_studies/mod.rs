@@ -49,3 +49,21 @@ pub use simple_moving_average::simple_moving_average;
 
 /// Provides functions for calculating double exponential moving averages.
 pub use double_exponential_moving_average::double_exponential_moving_average;
+
+/// Provides functions for Calculation for Hilbert Transform - Instantaneous Trendline
+pub use ht_trend_line::ht_trend_line;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
