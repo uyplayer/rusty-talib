@@ -30,14 +30,7 @@ use polars::prelude::*;
 use crate::ErrorMsg;
 
 
-/// Calculate the Hilbert Transform Instantaneous Trendline.
-/// https://www.prorealcode.com/prorealtime-indicators/john-ehlers-instantaneous-trendline/
-///
-/// https://c.mql5.com/forextsd/forum/59/023inst.pdf
-///
-/// https://tw.tradingview.com/script/dFWImthM-blackcat-L2-Ehlers-Hilbert-Transform/
-///
-/// This function takes high and low price data as input and calculates the Hilbert Transform Instantaneous Trendline.
+/// Calculate the Hilbert Transform Instantaneous Trendline(HT).
 ///
 /// # Arguments
 ///
@@ -79,7 +72,7 @@ pub fn ht_trend_line<'a>(high: &'a Series, low: &'a Series) -> Result<(Series,Se
     }
     let price = high.add_to(low)?.div(2);
     let array = price.to_arrow(0);
-    let mut price = match array.as_any().downcast_ref::<Float64Array>() {
+    let price = match array.as_any().downcast_ref::<Float64Array>() {
         Some(float_array) => {
             let values: &[f64] = float_array.values();
             let vec_values: Vec<f64> = values.to_vec();
@@ -93,7 +86,6 @@ pub fn ht_trend_line<'a>(high: &'a Series, low: &'a Series) -> Result<(Series,Se
     let mut i1 = vec![0.0; high.len()];
     // Quadrature phase output signal
     let mut q1 = vec![0.0; high.len()];
-
 
     for bar_index in 0..price.len() {
         if bar_index > 5 {
@@ -110,18 +102,14 @@ pub fn ht_trend_line<'a>(high: &'a Series, low: &'a Series) -> Result<(Series,Se
 // unit test
 #[cfg(test)]
 mod tests {
+    use rand::Rng;
     use super::*;
 
     #[test]
     fn test_b_bands()  -> Result<(), Box<dyn std::error::Error>> {
-        // let mut rng = rand::thread_rng();
-        // let close: Vec<f64> = (0..1000).map(|_| rng.gen_range(1.0..2000.0)).collect();
-        let high = Vec::from([
-            1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 1.0, 0.0, 11.0, 12.0, 13.0,
-        ]);
-        let low = Vec::from([
-            1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 1.0, 0.0, 11.0, 12.0, 13.0,
-        ]);
+        let mut rng = rand::thread_rng();
+        let high: Vec<f64> = (0..1000).map(|_| rng.gen_range(1.0..2000.0)).collect();
+        let low : Vec<f64>= (0..1000).map(|_| rng.gen_range(1.0..2000.0)).collect();
         let (q1, i1) = ht_trend_line(&Series::new("data", high), &Series::new("data", low))?;
         eprintln!("{:?}", q1);
         eprintln!("{:?}", i1);

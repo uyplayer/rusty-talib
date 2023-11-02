@@ -16,6 +16,7 @@ use polars::prelude::*;
 use crate::exponential_moving_average;
 use std::ops::Mul;
 
+/// Calculates the Double Exponential Moving Average (DEMA)
 ///
 /// python code :  2 * ta.ema(Source, Length) - ta.ema(ta.ema(Source, Length), Length)
 ///

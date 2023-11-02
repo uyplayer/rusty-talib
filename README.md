@@ -38,7 +38,7 @@ rusty-talib = { version = "0.1.0", features = ["overlap_studies"] }
 | DEMA                 | Double Exponential Moving Average           | Done    |
 | EMA                  | Exponential Moving Average                  | Done    |
 | HT_TRENDLINE         | Hilbert Transform - Instantaneous Trendline | Done    |
-| KAMA                 | Kaufman Adaptive Moving Average             | Pending |
+| KAMA                 | Kaufman Adaptive Moving Average             | Done    |
 | MA                   | Moving Average                              | Done    | 
 | MAMA                 | MESA Adaptive Moving Average                | Pending |
 | MAVP                 | Moving average with variable period         | Pending |

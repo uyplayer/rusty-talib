@@ -12,7 +12,7 @@
 use crate::ErrorMsg;
 use polars::prelude::*;
 
-/// Calculates the simple moving average within the given time period.
+/// Calculates the simple moving average within the given time period(SMA).
 ///
 ///
 /// # Arguments
@@ -68,13 +68,7 @@ pub fn simple_moving_average<'a>(
     let options = RollingOptionsImpl {
         window_size: duration,
         min_periods: 1,
-        weights: None,
-        center: false,
-        by: None,
-        tu: None,
-        tz: None,
-        closed_window: None,
-        fn_params: None,
+        ..Default::default()
     };
 
     let res = src.rolling_mean(options)?;

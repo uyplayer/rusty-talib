@@ -14,7 +14,7 @@ use crate::ErrorMsg;
 use polars::prelude::*;
 use std::ops::Mul;
 
-///
+///  Calculates the Bollinger Bands (BBands).
 ///``` python
 /// # python
 ///     random.seed()
@@ -42,7 +42,7 @@ use std::ops::Mul;
 /// 13  18.756056         7.4  -3.956056
 ///
 /// ```
-/// Calculates the Bollinger Bands (BBands) based on the provided closing prices and parameters.
+///
 ///
 /// # Arguments
 ///

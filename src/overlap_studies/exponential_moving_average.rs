@@ -14,7 +14,7 @@
 use crate::ErrorMsg;
 use polars::prelude::*;
 
-/// Calculates the exponential moving average of a Series.
+/// Calculates the exponential moving average of a Series(EMA).
 ///
 /// ``` python
 ///     #  This Python code produces the same result as the exponential_moving_average function does

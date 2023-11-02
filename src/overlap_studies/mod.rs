@@ -34,25 +34,28 @@ mod moving_average;
 mod simple_moving_average;
 mod double_exponential_moving_average;
 mod ht_trend_line;
+mod kama;
 
-/// Provides functions for calculating Bollinger Bands.
+
 pub use bbands::b_bands;
 
-/// Provides functions for calculating exponential moving averages.
+
 pub use exponential_moving_average::exponential_moving_average;
 
-/// Provides functions for calculating different types of moving averages.
+
 pub use moving_average::moving_average;
 
-/// Provides functions for calculating simple moving averages.
+
 pub use simple_moving_average::simple_moving_average;
 
-/// Provides functions for calculating double exponential moving averages.
+
 pub use double_exponential_moving_average::double_exponential_moving_average;
 
-/// Provides functions for Calculation for Hilbert Transform - Instantaneous Trendline
+
 pub use ht_trend_line::ht_trend_line;
 
+
+pub use kama::kama;
 
 
 
