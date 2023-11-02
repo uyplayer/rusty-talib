@@ -29,7 +29,7 @@
 //! - [Python Pandas KAMA Implementation](https://copyprogramming.com/howto/python-pandas-kaufman-adaptive-moving-average-kama)
 //! - [StockCharts.com - KAMA](https://school.stockcharts.com/doku.php?id=technical_indicators:kaufman_s_adaptive_moving_average)
 //!
-use std::ops::{Add, Mul, Sub};
+use std::ops::{Add, Mul};
 use polars::export::arrow::array::Float64Array;
 use polars::prelude::*;
 
@@ -60,7 +60,7 @@ use polars::prelude::*;
 /// println!("{:?}", kama_series);
 /// ```
 pub fn kama<'a>(
-    src: &Series,
+    src: &'a Series,
     time_period: Option<usize>,
     fast: Option<usize>,
     slow: Option<usize>,
@@ -131,7 +131,6 @@ pub fn kama<'a>(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rand::Rng;
 
     #[test]
     fn test_kama() -> Result<(), Box<dyn std::error::Error>> {
