@@ -40,7 +40,7 @@ rusty-talib = { version = "0.1.0", features = ["overlap_studies"] }
 | HT_TRENDLINE         | Hilbert Transform - Instantaneous Trendline | Done    |
 | KAMA                 | Kaufman Adaptive Moving Average             | Done    |
 | MA                   | Moving Average                              | Done    | 
-| MAMA                 | MESA Adaptive Moving Average                | Pending |
+| MAMA                 | MESA Adaptive Moving Average                | Done    |
 | MAVP                 | Moving average with variable period         | Pending |
 | MIDPOINT             | MidPoint over period                        | Pending |
 | MIDPRICE             | Midpoint Price over period                  | Pending |
@@ -314,7 +314,15 @@ for i in 0..result.len() {
     eprintln!("{:?}",elem);
 }
 ```
-
+### Change value in Series
+```rust
+let close = vec![
+    1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 1.0, 0.0, 11.0, 12.0, 13.0,
+];
+let mut prices = Series::new("data", close);
+let prices = prices.f64().unwrap().set_at_idx(vec![0, 1], Some(10.10)).unwrap().into_series();
+eprintln!("{}",prices);
+```
 
 ### License
 #### This project is licensed under the MIT License.

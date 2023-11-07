@@ -15,9 +15,9 @@
 // | DEMA                 | Double Exponential Moving Average           | Done    |
 // | EMA                  | Exponential Moving Average                  | Done    |
 // | HT_TRENDLINE         | Hilbert Transform - Instantaneous Trendline | Done    |
-// | KAMA                 | Kaufman Adaptive Moving Average             | Pending |
+// | KAMA                 | Kaufman Adaptive Moving Average             | Done    |
 // | MA                   | Moving Average                              | Done    |
-// | MAMA                 | MESA Adaptive Moving Average                | Pending |
+// | MAMA                 | MESA Adaptive Moving Average                | Done    |
 // | MAVP                 | Moving average with variable period         | Pending |
 // | MIDPOINT             | MidPoint over period                        | Pending |
 // | MIDPRICE             | Midpoint Price over period                  | Pending |
@@ -35,6 +35,7 @@ mod simple_moving_average;
 mod double_exponential_moving_average;
 mod ht_trend_line;
 mod kama;
+mod mama;
 
 
 pub use bbands::b_bands;
@@ -56,6 +57,7 @@ pub use ht_trend_line::ht_trend_line;
 
 
 pub use kama::kama;
+pub use mama::mama;
 
 
 
