@@ -36,6 +36,7 @@ mod double_exponential_moving_average;
 mod ht_trend_line;
 mod kama;
 mod mama;
+mod mavp;
 
 
 pub use bbands::b_bands;
@@ -58,7 +59,7 @@ pub use ht_trend_line::ht_trend_line;
 
 pub use kama::kama;
 pub use mama::mama;
-
+pub use mavp::mavp;
 
 
 
