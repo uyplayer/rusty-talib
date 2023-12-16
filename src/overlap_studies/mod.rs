@@ -58,9 +58,7 @@ pub use ht_trend_line::ht_trend_line;
 
 
 pub use kama::kama;
-
 pub use mama::mama;
-
 pub use mavp::mavp;
 
 
